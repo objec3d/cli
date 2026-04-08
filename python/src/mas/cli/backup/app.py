@@ -69,6 +69,7 @@ class BackupApp(BaseApp):
                 "upload_backup",
                 "aws_access_key_id",
                 "aws_secret_access_key",
+                "aws_session_token",
                 "s3_bucket_name",
                 "s3_region",
                 "s3_endpoint_url",
@@ -483,6 +484,10 @@ class BackupApp(BaseApp):
 
                 awsSecretAccessKey = self.promptForString("S3 Secret Access Key", isPassword=True)
                 self.setParam("aws_secret_access_key", awsSecretAccessKey)
+
+                awsSessionToken = self.promptForString("AWS Session Token (optional, for temporary credentials)", default="")
+                if awsSessionToken:
+                    self.setParam("aws_session_token", awsSessionToken)
 
                 s3BucketName = self.promptForString("S3 Bucket Name")
                 self.setParam("s3_bucket_name", s3BucketName)

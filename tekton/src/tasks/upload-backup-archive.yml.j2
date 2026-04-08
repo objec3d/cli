@@ -25,6 +25,10 @@ spec:
       type: string
       description: AWS Secret Access Key for S3 upload
       default: ""
+    - name: aws_session_token
+      type: string
+      description: AWS session token for S3 upload (temporary credentials)
+      default: ""
     - name: s3_bucket_name
       type: string
       description: S3 bucket name for backup upload
@@ -73,6 +77,8 @@ spec:
         value: $(params.aws_access_key_id)
       - name: S3_SECRET_ACCESS_KEY
         value: $(params.aws_secret_access_key)
+      - name: AWS_SESSION_TOKEN
+        value: $(params.aws_session_token)
       - name: S3_BUCKET_NAME
         value: $(params.s3_bucket_name)
       - name: S3_REGION

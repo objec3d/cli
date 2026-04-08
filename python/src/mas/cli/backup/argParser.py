@@ -103,6 +103,12 @@ uploadArgGroup.add_argument(
     help="AWS Secret Access Key for S3 upload"
 )
 uploadArgGroup.add_argument(
+    '--aws-session-token',
+    dest='aws_session_token',
+    required=False,
+    help="AWS session token for S3 upload (temporary credentials)"
+)
+uploadArgGroup.add_argument(
     '--s3-bucket-name',
     required=False,
     help="S3 bucket name for backup upload"

@@ -65,6 +65,11 @@
   description: AWS Secret Access Key for S3 upload
   default: ""
 
+- name: aws_session_token
+  type: string
+  description: AWS session token for S3 upload/download (temporary credentials)
+  default: ""
+
 - name: s3_bucket_name
   type: string
   description: S3 bucket name for backup upload

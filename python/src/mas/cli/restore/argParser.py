@@ -97,7 +97,15 @@ masArgGroup.add_argument(
     required=False,
     action="store_const",
     const="true",
-    default="true",
+    # default is intentionally None (not "true") so that downstream code can
+    # distinguish "user explicitly passed --include-drocfg-from-backup" from
+    # "user passed nothing". RestoreApp.setDefaultParams() still falls back to
+    # "true" if the user passed neither --include-drocfg-from-backup nor
+    # --exclude-drocfg-from-backup, so the effective default is unchanged.
+    # See RestoreApp.setNonInteractiveDROParams() for why the explicit/implicit
+    # distinction matters (otherwise --include-drocfg-from-backup gets silently
+    # overridden in non-interactive mode).
+    default=None,
     help="Include DRO config from backup during Suite restore."
 )
 
